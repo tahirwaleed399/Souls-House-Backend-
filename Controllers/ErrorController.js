@@ -25,7 +25,7 @@ exports.ErrorController = (err, req, res, next) => {
        
   }
    
-    if (err.isOperational) {
+    if (err.isOperationalError) {
       jsonResponce(res, err.statusCode, false, {
         statusCode: err.statusCode,
         message: err.message,
