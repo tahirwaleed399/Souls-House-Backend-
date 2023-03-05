@@ -5,6 +5,7 @@ exports.ErrorController = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.message = err.message || "Internal Server Error";
 
+
   if (process.env.NODE_ENV === "production") {
     if(err.name === 'CastError') {
         const Error = {...err};
@@ -19,6 +20,7 @@ exports.ErrorController = (err, req, res, next) => {
     }
     // For duplication of unique entries 
     if(err.code === 11000) {
+      console.log('Gotten Error Code 11000')
       const Error = {...err};
       let value = Object.values(Error.keyValue)[0]
      err = new NewErrorHandler(`Already Exists :  ${value}`, 400);

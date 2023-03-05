@@ -1,0 +1,17 @@
+# We want email
+# we will validate if user is already in our database we will not create any user and ask user to log in please 
+# we will generate a otp 4 digit
+# we will send original otp to users mail
+# we will hash that 4 digit otp
+# we will generate an token with the current date + hashed otp + email send it back
+# in frontend we will store it to users local storage
+
+# when user enter otp we will send otp + JWT token back to backend
+# we will check about its time validation
+# we will extract the hashed otp and email from jwt token
+# We will create a hash for recieven otp 
+# We will verify the recieved otp 
+# If verified then we will create a user who is not activated but authenticated
+
+
+
