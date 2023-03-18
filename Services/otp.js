@@ -5,7 +5,8 @@ class OtpService {
   constructor() {}
 
   generateOtp() {
-const  pureOtp = crypto.randomInt(1000,9999);
+// const  pureOtp = crypto.randomInt(1000,9999);
+const  pureOtp = 1111;
 
     return pureOtp;
   }

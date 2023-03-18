@@ -11,6 +11,11 @@ exports.ErrorController = (err, req, res, next) => {
         const Error = {...err};
      err= new NewErrorHandler(`This Id is invalid ${Error.value} at ${err.path}`, 404);
          
+    }
+     if(err.message === 'jwt expired') {
+        const Error = {...err};
+     err= new NewErrorHandler(`Token Expired`, 401);
+         
     } 
      if(err.name === 'ValidationError') {
         const Error = {...err};
@@ -40,11 +45,19 @@ exports.ErrorController = (err, req, res, next) => {
       });
     }
   } else if (process.env.NODE_ENV === "development") {
-
-    jsonResponce(res, err.statusCode, false, {
-      statusCode: err.statusCode,
-      message: err.message,
-      stack: err.stack,
-    });
+if(err.message === 'jwt expired'){
+  jsonResponce(res, 401, false, {
+    statusCode: err.statusCode,
+    message: err.message,
+    stack: err.stack,
+  });
+}else{
+  jsonResponce(res, err.statusCode, false, {
+    statusCode: err.statusCode,
+    message: err.message,
+    stack: err.stack,
+  });
+}
+    
   }
 };

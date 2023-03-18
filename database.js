@@ -5,7 +5,7 @@ exports.connectMongoDb = function(){
     mongoose.connect(
         process.env.DATABASE_URL,
         {
-          dbName: "CodersSouls",
+          dbName: "SoulsHouse",
           useNewUrlParser: true,
           useUnifiedTopology: true,
         },

@@ -20,6 +20,15 @@ const userSchema = new mongoose.Schema({
     activated : {
         type: Boolean , 
         default: false   
+    },
+    profile : {
+        type : {
+            public_id : String,
+            url : String
+        } ,
+        default: null
+        
+
     }
 },
 {
