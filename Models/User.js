@@ -10,6 +10,9 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         trim:true,
         validate: [ isEmail, 'invalid email' ]
+    },name  : {
+        type : String ,
+        trim:true,
     },
     password : {
         type : String ,
