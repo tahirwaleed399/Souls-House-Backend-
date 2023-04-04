@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const userRouter =  require('./Routes/user.js');
+const roomRouter =  require('./Routes/room.js');
 const { jsonResponce } = require('./Utils/responce.js');
 const NewErrorHandler = require('./Utils/NewErrorHandler');
 const { ErrorController } = require('./Controllers/ErrorController.js');
@@ -17,6 +18,7 @@ app.use(cors({
     credentials: true,
 }))
 app.use('/api' ,userRouter);
+app.use('/api' ,roomRouter);
 app.all('*', (req, res , next)=>next(new NewErrorHandler('Route Not Found' , 404)))
 app.use(ErrorController)
 

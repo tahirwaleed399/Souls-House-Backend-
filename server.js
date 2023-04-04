@@ -17,14 +17,25 @@ process.on("uncaughtException", (err) => {
  const app = require("./app");
 const { connectMongoDb } = require("./database");
 const PORT = process.env.PORT || 5700;
+const httpServer = require('http').createServer(app);
+const server = httpServer.listen(PORT, () => {
+  console.log("Server Listening on " + PORT);
+});
 
+
+const io = require('socket.io')(httpServer, {
+  cors : {
+    origin:'http://localhost:3000',
+    methods:['GET','POST']
+  }
+});
+io.on('connection', (socket)=>{
+  console.log('New Connection:', socket.id); 
+
+})
 
 
 connectMongoDb();
-
-const server = app.listen(PORT, () => {
-   console.log("Server Listening on " + PORT);
- });
 
 
 
